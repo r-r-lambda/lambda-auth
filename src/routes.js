@@ -1,9 +1,9 @@
 const express = require('express');
 
-const getRooms = require('./services/get-rooms');
+const validateSession = require('./services/validate-session');
 
 const router = express.Router();
 
-router.get('/rooms', getRooms);
+router.get('/', validateSession);
 
 module.exports = router;
