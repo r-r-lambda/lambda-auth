@@ -1,7 +1,7 @@
 const validateSessionDao = require('../dao/validate-session-dao');
 
 const validateSessionBL = async (token) => {
-  const userData = validateSessionDao(token);
+  const userData = await validateSessionDao(token);
 
   const authPolicy = {
     principalId: 'id_principal',

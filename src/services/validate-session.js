@@ -7,7 +7,7 @@ const validateSession = async (req, res, next) => {
       ''
     );
 
-    const iamPolicy = validateSessionBL(token);
+    const iamPolicy = await validateSessionBL(token);
 
     res.send(iamPolicy);
   } catch (error) {
