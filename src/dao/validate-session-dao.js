@@ -3,7 +3,7 @@ const firebase = require('firebase-admin');
 
 const AuthorizationError = require('../errors/authorization-error');
 
-const validateSession = async (token) => {
+const validateSessionDao = async (token) => {
   firebase.initializeApp(authConfig);
 
   let dataFromToken;
@@ -17,4 +17,4 @@ const validateSession = async (token) => {
   return dataFromToken || null;
 };
 
-module.exports = validateSession;
+module.exports = validateSessionDao;
