@@ -1,4 +1,6 @@
-const authConfig = {
+const authConfig = require('firebase-admin');
+
+const config = {
   apiKey: process.env.API_KEY,
   authDomain: process.env.AUTH_DOMAIN,
   databaseURL: process.env.DATABASE_URL,
@@ -8,5 +10,7 @@ const authConfig = {
   appId: process.env.APP_ID,
   measurementId: process.env.MEASUREMENT_ID,
 };
+
+authConfig.initializeApp(config);
 
 module.exports = authConfig;
