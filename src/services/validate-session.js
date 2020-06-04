@@ -1,18 +1,23 @@
 const validateSessionBL = require('../bl/validate-session-bl');
 
-const validateSession = async (req, res, next) => {
+const validateSession = async (event) => {
+  let iamPolicy = null;
+
   try {
-    const token = req.apiGateway.event.authorizationToken.replace(
-      'Bearer ',
-      ''
-    );
+    const token = event.authorizationToken.replace('Bearer ', '');
+    const methodArn = event.methodArn;
 
-    const iamPolicy = await validateSessionBL(token);
-
-    res.send(iamPolicy);
+    iamPolicy = await validateSessionBL(token, methodArn);
   } catch (error) {
-    next(error, req, res, next);
+    console.log(error);
+    return new Promise(function (_, reject) {
+      reject(new Error('Error de authorización'));
+    });
   }
+
+  return new Promise(function (resolve) {
+    resolve(iamPolicy);
+  });
 };
 
 module.exports = validateSession;
