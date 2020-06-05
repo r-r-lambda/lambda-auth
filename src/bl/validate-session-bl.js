@@ -11,7 +11,7 @@ const validateSessionBL = async (token, methodArn) => {
         {
           Action: 'execute-api:Invoke',
           Effect: 'Allow',
-          Resource: methodArn,
+          Resource: 'arn:aws:execute-api:us-east-1:962378977114:*',
         },
       ],
     },
