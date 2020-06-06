@@ -1,9 +1,9 @@
-class DatabaseError extends Error {
+class AuthorizationError extends Error {
   constructor(cause) {
-    super('Error de base de datos');
-    this.name = 'DatabaseError';
+    super('Error de Autenticación.');
+    this.name = 'AuthorizationError';
     this.error = cause.message;
-    this.status = 500;
+    this.status = 403;
 
     console.error(cause.stack);
   }
@@ -17,4 +17,4 @@ class DatabaseError extends Error {
   }
 }
 
-module.exports = DatabaseError;
+module.exports = AuthorizationError;
